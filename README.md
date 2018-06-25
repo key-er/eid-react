@@ -33,5 +33,5 @@ to connect mlab mongo
 Steps
 - Add to the scripts in package.json `  "postinstall": "webpack"  `
 - Add Procfile -  ` web: node server/index.js `
-- Pushing to master branch deploys to heroku
+- Pushing to master branch deploys to heroku `https://eid-react.herokuapp.com/`
 

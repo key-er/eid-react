@@ -6,6 +6,9 @@
 `npm run server-dev` (runs nodemon)
 
 
+` cd server; mkdir -p data/db `
+`mongod --dbpath data/db`
+
 Test
 
 `npm install --save mocha chai`
@@ -19,7 +22,7 @@ for continuous monitor
 
 
 to connect mlab mongo
-`mongo ds263670.mlab.com:63670/<dbname> -u <dbuser> -p <dbpassword>` 
+`mongo ds263670.mlab.com:63670/<dbname> -u <dbuser> -p <dbpassword>`
 (check settings -> revealconfig for all env variables)
 
 ```

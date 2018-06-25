@@ -30,5 +30,6 @@ client/dist/bundle.js
 node_modules/
 bower_components/
 
+
 server/db/data/
 config.js

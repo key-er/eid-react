@@ -30,9 +30,8 @@ to connect mlab mongo
 
 
 ### Deploy
-
-Pushing to master branch deploys to heroku
-
-
-
+Steps
+- Add to the scripts in package.json `  "postinstall": "webpack"  `
+- Add Procfile -  ` web: node server/index.js `
+- Pushing to master branch deploys to heroku
 

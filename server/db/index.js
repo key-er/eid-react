@@ -2,7 +2,8 @@ const mongoose = require('mongoose')
 const connection = mongoose.connection;
 const mockData = require('../models/data.js')
 
-mongoose.connect('mongodb://localhost/lex');
+const MONGODB_URI = process.env.DB_URI  || 'mongodb://localhost/lex'
+mongoose.connect(MONGODB_URI);
 
 // connection.once('open', function() {
 //   console.log('we are connected')

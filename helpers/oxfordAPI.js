@@ -1,6 +1,17 @@
 const request = require('request');
-const config = require('../config.js')
 const utils = require('./utils.js')
+try {
+  console.log('no exception')
+  config = require('../config.js')
+}
+
+catch(e) {
+  console.log('hit exception')
+  config = {
+    'APP_ID': process.env.APP_ID ,
+    'APP_KEY': process.env.APP_KEY
+  }
+}
 
 
 function searchLexicon(word, cb) {

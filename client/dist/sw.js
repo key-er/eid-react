@@ -8,12 +8,11 @@ self.addEventListener('install', function(e) {
        'images/girl.png'
      ]);
    })
-
  );
- debugger;
 });
 
 self.addEventListener('fetch', function(e) {
+  console.log(e.request.url);
   console.log(e.request.url);
   e.respondWith(
     caches.match(e.request).then(function(response) {

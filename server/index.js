@@ -44,18 +44,40 @@ app.post('/word', function(req, res) {
 })
 
 
-
-app.get('/word/:word(\\D+)/', function(req, res)  {
-  console.log('came in strings get', req.url)
-  console.log(req.params)
-  query({word: req.params.word})
-  .then(function(data) {
-    console.log('inside then')
-    res.status(200).send(data)
-  })
-  .catch((err) => res.status(404).send(err))
-
+// same thing as above but with get
+app.get('/word/:word(\\D+)/', (req, res) => {
+ const word = req.params.word
+ console.log(req.params) // req.params = {word: <regexmatch>}
+ query(req.params)
+ .then((matchedDoc) => res.status(200).send(matchedDoc[0]))
+ .catch((err) => {
+  if (err === 'not found') {
+    searchLexicon(word, (err, data) => {
+      if (err) res.status(404).send()
+      else {
+        console.log('saving in db')
+        console.log(data)
+        db.save(data)
+        res.status(200).send(data)
+      }
+    })
+  }
+  else res.status(503).send('sever internal error')
+ })
 })
+
+
+// app.get('/word/:word(\\D+)/', function(req, res)  {
+//   console.log('came in strings get', req.url)
+//   console.log(req.params)
+//   query({word: req.params.word})
+//   .then(function(data) {
+//     console.log('inside then')
+//     res.status(200).send(data)
+//   })
+//   .catch((err) => res.status(404).send(err))
+
+// })
 
 
 

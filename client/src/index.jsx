@@ -17,7 +17,16 @@ class App extends React.Component {
   }
 
 
-  search() {
+  search(word) {
+    if (word)
+    $.get(`/word/${word}`, (data) => {
+      this.setState({
+        thesauri: data
+      })
+    })
+
+
+    if (!word)
     $.post('/word', {word: this.state.word, username: sessionStorage.getItem('username')}, (data) => {
       this.setState({
         thesauri: data
@@ -33,7 +42,7 @@ class App extends React.Component {
 
   handleKeyPress(event) {
     if (event.key === 'Enter') {
-      this.search.apply(this)
+      this.search.call(this, event.target.value)
     }
   }
 

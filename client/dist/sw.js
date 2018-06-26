@@ -4,7 +4,7 @@ self.addEventListener('install', function(e) {
    caches.open('eid').then(function(cache) {
      return cache.addAll([
 
-       '/sw.js',
+       '/',
        '/index.html',
        '/index.css',
        '/images/girl.png'

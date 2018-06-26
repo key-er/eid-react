@@ -3,11 +3,12 @@ self.addEventListener('install', function(e) {
  e.waitUntil(
    caches.open('eid').then(function(cache) {
      return cache.addAll([
-
        '/',
        '/index.html',
        '/index.css',
-       '/images/girl.png'
+       '/images/girl.png',
+       '/bundle.js',
+       '/index.js'
      ]);
    })
  );

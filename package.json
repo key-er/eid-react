@@ -23,6 +23,7 @@
     "chai": "^4.1.2",
     "express": "^4.15.0",
     "jquery": "^3.1.1",
+    "lighthouse": "^2.9.4",
     "lodash": "^4.17.10",
     "mocha": "^5.2.0",
     "mongoose": "^4.13.14",

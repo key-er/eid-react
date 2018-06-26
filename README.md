@@ -38,3 +38,8 @@ Steps
 - Add Procfile -  ` web: node server/index.js `
 - Pushing to master branch deploys to heroku `https://eid-react.herokuapp.com/`
 
+
+
+#### Service Worker test
+`npm install lighthouse --dev`
+`./node_modules/lighthouse/lighthouse-cli/index.js https://eid-react.herokuapp.com/`

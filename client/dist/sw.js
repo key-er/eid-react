@@ -3,10 +3,10 @@ self.addEventListener('install', function(e) {
  e.waitUntil(
    caches.open('eid').then(function(cache) {
      return cache.addAll([
-       'sw.js',
-       'index.html',
-       'index.css',
-       'images/girl.png'
+       '/sw.js',
+       '/index.html',
+       '/index.css',
+       '/images/girl.png'
      ]);
    })
  );

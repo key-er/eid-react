@@ -38,8 +38,3 @@ function searchLexicon(word, cb) {
 
 module.exports.searchLexicon = searchLexicon;
 
-
-
-// searchLexicon('procrastinate', function(err, data) {
-//   console.log(parseData(data))
-// })

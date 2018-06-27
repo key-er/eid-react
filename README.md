@@ -22,6 +22,7 @@ for continuous monitor
 
 
 to connect mlab mongo
+`mongo --host 127.0.0.1:27017`
 `mongo ds263670.mlab.com:63670/<dbname> -u <dbuser> -p <dbpassword>`
 (check settings -> revealconfig for all env variables)
 

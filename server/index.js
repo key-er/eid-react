@@ -33,7 +33,7 @@ app.post('/word', function(req, res) {
         else {
           console.log('saving in db')
           // append username to the api data before saving
-          data.username = req.body.username;
+          data.username = req.body.username || 'guest';
           console.log(data)
           db.save(data)
           res.status(200).send(data)
@@ -68,7 +68,7 @@ app.get('/word/:from[0-9\-]{0}/', function (req, res) {
 
   var dateObj = new Date(req.params.from.split('-').join(','))
 
-  query({'createdAt': {"$gte": dateObj}, username: req.query.username})
+  query({'createdAt': {"$lte": dateObj}, username: req.query.username})
   .then((matchedDoc) => res.status(200).send(matchedDoc))
   .catch((err) => res.status(404).send(err))
 

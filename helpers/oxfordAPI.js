@@ -31,7 +31,6 @@ function searchLexicon(word, cb) {
     if (err || res.statusCode === 404) cb(err, null)
     else if(res.statusCode === 200){
        cb(null, utils.parseData(body))
-       // cb(null, body)
     }
   });
 }

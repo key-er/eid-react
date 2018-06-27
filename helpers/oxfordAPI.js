@@ -26,7 +26,6 @@ function searchLexicon(word, cb) {
   }
 
   request(options, function(err, res, body) {
-    console.log('res***********************' )
     console.log(res.statusCode)
     if (err || res.statusCode === 404) cb(err, null)
     else if(res.statusCode === 200){

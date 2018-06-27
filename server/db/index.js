@@ -53,7 +53,8 @@ var testdata = {
   synonyms: [ 'contented','jocular'],
   antonyms: [ 'sad' ],
   examples: [ 'Melissa came in looking happy and excited' ],
-  createdAt: new Date(2017, 01, 02) }
+  createdAt: new Date(2017, 01, 02)
+}
 
 // example save and query func usage
 // console.log('****** saving....')

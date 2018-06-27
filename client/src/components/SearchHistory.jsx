@@ -50,11 +50,12 @@ class SearchHistory extends React.Component {
 
   render() {
     // conditional rendering
-    const queryResult = this.state.queryResult;
+    const queryResult = this.state.queryResult || ['No data found'];
     const username = sessionStorage.getItem('username')
 
     if (queryResult.length > 0) {
       var savedWords = queryResult.filter((q) => q.word).map((f) => f.word)
+
     }
 
     if (username) {
@@ -68,23 +69,6 @@ class SearchHistory extends React.Component {
       // alert('you are not logged in')
       var userInput = <Username handleUser={this.handleUsernameInput.bind(this)} />
     }
-
-
-
-
-    // if (!username) this.setState({viewUserText: true })
-    // if (username) this.setState({viewUserText: false })
-
-    // if (this.state.viewUserText) {
-    //   var userInput = <Username handleUser={this.props.handleUser.bind(this)} />
-    // }
-
-    // if (!this.state.viewUserText) {
-    //   var datePicker = this.datePicker()
-    //   var greeting = <h4> Hi, {username}! View your search history </h4>
-    // }
-
-
 
 
     if (savedWords) {
@@ -111,15 +95,3 @@ export default SearchHistory;
 
 
 
-
-    // if (!username) this.setState({viewUserText: true })
-    // if (username) this.setState({viewUserText: false })
-
-    // if (this.state.viewUserText) {
-    //   var userInput = <Username handleUser={this.props.handleUser.bind(this)} />
-    // }
-
-    // if (!this.state.viewUserText) {
-    //   var datePicker = this.datePicker()
-    //   var greeting = <h4> Hi, {username}! View your search history </h4>
-    // }

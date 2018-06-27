@@ -17,11 +17,9 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 
 
 
-
 app.post('/word', function(req, res) {
   // check db first
   console.log('******* in POST ***** ', req.body.word)
-
   query({word:req.body.word, username: req.body.username})
   .then((matchedDoc) => res.status(200).send(matchedDoc[0]))
   .catch((err) => {
@@ -31,12 +29,20 @@ app.post('/word', function(req, res) {
       searchLexicon(req.body.word, (err, data) => {
         if (err) res.status(404).send()
         else {
-          console.log('saving in db')
-          // append username to the api data before saving
-          data.username = req.body.username || 'guest';
-          console.log(data)
-          db.save(data)
-          res.status(200).send(data)
+          if (data === null)  {
+            data = { username: req.body.username, word:req.body.word, synonyms: ['not found'], antonyms: ['not found'], examples: ['not found'] }
+            // don't save in db just send the response
+            console.log('not saving in db')
+            res.status(200).send(data)
+          }
+          else if (data !== null) {
+            console.log('err/data fetched is:', err, data)
+            // append username to the api data before saving
+            data.username = req.body.username || 'guest';
+            console.log('saving in db')
+            db.save(data)
+            res.status(200).send(data)
+          }
         }
       });
     }
@@ -67,10 +73,9 @@ app.get('/word/:from[0-9\-]{0}/', function (req, res) {
   console.log(req.query)
 
   var dateObj = new Date(req.params.from.split('-').join(','))
-
   query({'createdAt': {"$lte": dateObj}, username: req.query.username})
   .then((matchedDoc) => res.status(200).send(matchedDoc))
-  .catch((err) => res.status(404).send(err))
+  .catch((err) => res.status(200).send({word:'No record found'}))
 
 });
 

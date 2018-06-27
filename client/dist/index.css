@@ -3,7 +3,7 @@ h2 {
 }
 
 h3 {
-    color: blue;
+    color: grey;
 }
 
 ul {
@@ -11,8 +11,19 @@ ul {
 }
 
 
+img {
+    opacity: 0;
+    border-radius: 40%;
+}
+
+img {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
 body {
   background-image : url('images/girl.png');
+  background-color: 'lightblue';
   background-repeat: no-repeat;
   /*background-size: cover;*/
   background-position-x: 100%;
@@ -59,4 +70,14 @@ button {
 button:hover {
     background-color: #555555;
     color: red;
+}
+
+/*animation*/
+.example-appear {
+  opacity: 0.01;
+}
+
+.example-appear.example-appear-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
 }

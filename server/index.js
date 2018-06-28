@@ -16,7 +16,7 @@ app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 
-app.get('/', function(req, res) {
+app.get('/login', function(req, res) {
   res.redirect('https://github.com/login/oauth/authorize?client_id=6b9e164de8e098f9fe9c&redirect_uri=https://eid-react.herokuapp.com/auth')
 })
 

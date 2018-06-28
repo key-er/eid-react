@@ -3,7 +3,9 @@ const db = require('./db/index.js');
 const api = require('../helpers/oxfordAPI.js')
 const searchLexicon = api.searchLexicon;
 const utils = require('../helpers/utils.js')
+const request = require('request')
 var query = utils.query;
+
 
 
 let app = express();
@@ -24,21 +26,33 @@ app.get('/login', function(req, res) {
 
 app.get('/auth', function(req, res) {
 
-  console.log(" ****** +++++ req.params")
-  console.log(req.params)
+  if (req.query.code && req.query.state === 'xstr1ing') {
 
-  console.log("******  +++++++ req.body")
-  console.log(req.body)
+    let options = {
+      url: 'https://github.com/login/oauth/access_token',
+      client_id: '6b9e164de8e098f9fe9c',
+      code: req.query.code,
+      redirect_uri: 'https://eid-react.herokuapp.com/protected',
+      state: req.query.state
+    }
+    request.post(options, function(err, resp, body) {
+      console.log('err in post', err)
+      console.log('res in post')
+      console.log('body in post', body)
+    })
+  }
 
-
-  res.send('found code in auth')
-
+  else {
+    res.send('stats and code condition not match')
+  }
 
 
 })
 
 
-
+app.get('/protected', function(req, res) {
+  res.send('protected resource')
+})
 
 app.post('/word', function(req, res) {
   // check db first

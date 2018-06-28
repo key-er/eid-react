@@ -39,7 +39,7 @@ app.get('/auth', function(req, res) {
       console.log('err in post', err)
       console.log('res in post')
       console.log('body in post', body)
-      res.send('yaay')
+
     })
   }
 

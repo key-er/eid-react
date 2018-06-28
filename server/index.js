@@ -23,12 +23,11 @@ app.get('/login', function(req, res) {
 
 
 app.get('/auth', function(req, res) {
-  if (req.body.code) {
-    res.send('found code in auth', req.body.code)
-  }
-  else {
-    res.send('github redirected here')
-  }
+
+  console.log(req)
+  res.send('found code in auth')
+
+
 
 })
 

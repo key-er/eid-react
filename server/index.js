@@ -24,7 +24,13 @@ app.get('/login', function(req, res) {
 
 app.get('/auth', function(req, res) {
 
-  console.log(req)
+  console.log(" ****** +++++ req.params")
+  console.log(req.params)
+
+  console.log("******  +++++++ req.body")
+  console.log(req.body)
+
+
   res.send('found code in auth')
 
 

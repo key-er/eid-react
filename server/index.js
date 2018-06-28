@@ -17,13 +17,19 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 
 
 app.get('/login', function(req, res) {
+  if (!req.code)
   res.redirect('https://github.com/login/oauth/authorize?client_id=6b9e164de8e098f9fe9c&redirect_uri=https://eid-react.herokuapp.com/auth')
+  else if (req.code) {
+    res.send('found code', req.code)
+  }
 })
 
 
 app.get('/auth', function(req, res) {
   res.send('github redirected here')
 })
+
+
 
 
 app.post('/word', function(req, res) {

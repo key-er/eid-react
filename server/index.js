@@ -35,15 +35,16 @@ app.get('/auth', function(req, res) {
       redirect_uri: 'https://eid-react.herokuapp.com/protected',
       state: req.query.state
     }
-    request.post(options, function(err, resp, body) {
+    request.post(options, function(err, res, body) {
       console.log('err in post', err)
       console.log('res in post')
       console.log('body in post', body)
+      res.status(200).send('yaay')
     })
   }
 
   else {
-    res.send('stats and code condition not match')
+    res.status(500).send('stats and code condition not match')
   }
 
 

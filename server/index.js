@@ -22,7 +22,7 @@ app.get('/', function(req, res) {
 
 
 app.get('/auth', function(req, res) {
-  res.send('github redirected here', JSON.stringify(req))
+  res.send('github redirected here')
 })
 
 

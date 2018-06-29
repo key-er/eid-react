@@ -37,16 +37,16 @@ app.get('/auth', function(req, res) {
       state: req.query.state
     }
 
-    request.post(options, function(err, res, body) {
+    request.post(options, function(err, response, body) {
       console.log('err in post', err)
       console.log('res in post')
       console.log('body in post', body)
-      res.end('posted...')
+      res.send('posted...')
     })
   }
 
   else {
-    res.end('stats and code condition not match')
+    res.send('stats and code condition not match')
   }
 
 

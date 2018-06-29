@@ -30,25 +30,38 @@ app.get('/auth', function(req, res) {
 
     let options = {
       url: 'https://github.com/login/oauth/access_token',
-      client_id: '6b9e164de8e098f9fe9c',
+      client_id: process.env.github_secret.split('|')[0],
+      client_secret: process.env.github_secret.split('|')[1],
       code: req.query.code,
       redirect_uri: 'https://eid-react.herokuapp.com/protected',
       state: req.query.state
     }
+
     request.post(options, function(err, res, body) {
       console.log('err in post', err)
       console.log('res in post')
       console.log('body in post', body)
-
+      res.end('posted...')
     })
   }
 
   else {
-    res.send('stats and code condition not match')
+    res.end('stats and code condition not match')
   }
 
 
 })
+
+
+
+// app.get('/auth', function(req, res) {
+//   var code = req.query.code;
+
+//   request.post({url:'https://github.com/login/oauth/access_token', cliend_id: '1a87845988b42de82d4c', client_secret:process.env.client_secret_oath, code:code}, function(e, r, body) {
+//       console.log(body)
+//       res.end('posted')
+//   })
+// })
 
 
 app.get('/protected', function(req, res) {

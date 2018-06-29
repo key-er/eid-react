@@ -16,17 +16,18 @@ app.use(express.static(__dirname + '/../client/dist'));
 var bodyParser = require('body-parser');
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+var
 
 
 app.get('/login', function(req, res) {
-  res.redirect('https://github.com/login/oauth/authorize?state=xstr1ing&client_id=6b9e164de8e098f9fe9c&redirect_uri=https://eid-react.herokuapp.com/auth')
+  res.redirect('https://github.com/login/oauth/authorize?client_id=6b9e164de8e098f9fe9c&redirect_uri=https://eid-react.herokuapp.com/auth')
 
 })
 
 
 app.get('/auth', function(req, res) {
 
-  if (req.query.code && req.query.state === 'xstr1ing') {
+  if (req.query.code) {
 
     let options = {
       url: 'https://github.com/login/oauth/access_token',

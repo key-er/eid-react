@@ -42,27 +42,14 @@ app.get('/auth', function(req, res) {
       console.log('err in post', err)
       console.log('res in post')
       console.log('body in post', body)
-      res.send('posted...')
+      res.send(body)
     })
   }
 
   else {
     res.send('stats and code condition not match')
   }
-
-
 })
-
-
-
-// app.get('/auth', function(req, res) {
-//   var code = req.query.code;
-
-//   request.post({url:'https://github.com/login/oauth/access_token', cliend_id: '1a87845988b42de82d4c', client_secret:process.env.client_secret_oath, code:code}, function(e, r, body) {
-//       console.log(body)
-//       res.end('posted')
-//   })
-// })
 
 
 app.get('/protected', function(req, res) {

@@ -32,18 +32,12 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 var client_id = config.client_id;
 var client_secret = config.client_secret;
 
-// app.get('/login', function(req, res) {
-//   res.redirect('https://github.com/login/oauth/authorize?client_id=6b9e164de8e098f9fe9c&redirect_uri=https://eid-react.herokuapp.com/auth')
-
-// })
 
 app.get('/login', function(req, res) {
   res.redirect('https://github.com/login/oauth/authorize?client_id=6b9e164de8e098f9fe9c')
 })
 
-
-// app.get('https://github.com/login/oauth/authorize?client_id=6b9e164de8e098f9fe9c')
-// it would redirect to (https://eid-react.herokuapp.com/auth because defined in UI dev settings as callback) with code as https://eid-react.herokuapp.com/auth?code=bf6c7dbc9aebb8d242bc' Now we need to exchange this  code with https://github.com/login/oauth/access_token to get token in response
+// it would redirect to (https://eid-react.herokuapp.com/auth (because of UI dev settings as callback=/auth) with code as https://eid-react.herokuapp.com/auth?code=bf6c7dbc9aebb8d242bc' Now we need to exchange this  code with https://github.com/login/oauth/access_token to get access_token in response. Once we get the access token, we can access to protected route?
 
 app.get('/auth', function(req, res) {
   console.log('********** in auth get', req.query.code)
@@ -62,7 +56,12 @@ app.get('/auth', function(req, res) {
       console.log(body)
       // res.send(body)
       var token = body.split('&')[0].split('=')[1]
-      res.redirect(`https://api.github.com/user?access_token=${token}`)
+      res.set({
+        Authorization: `token ${token}`
+      })
+      // res.redirect(`https://api.github.com/user?access_token=${token}`)
+      res.redirect('https://api.github.com/user')
+
     })
   }
 

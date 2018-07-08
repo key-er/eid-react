@@ -38,7 +38,7 @@ var client_secret = config.client_secret;
 // })
 
 app.get('/login', function(req, res) {
-  request.get('https://github.com/login/oauth/authorize?client_id=6b9e164de8e098f9fe9c')
+  res.redirect('https://github.com/login/oauth/authorize?client_id=6b9e164de8e098f9fe9c')
 })
 
 

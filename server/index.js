@@ -27,28 +27,26 @@ app.get('/login', function(req, res) {
 
 app.get('/auth', function(req, res) {
 
-  if (req.query.code) {
+  res.send(req)
 
-    let options = {
-      url: 'https://github.com/login/oauth/access_token',
-      client_id: process.env.github_secret.split('|')[0],
-      client_secret: process.env.github_secret.split('|')[1],
-      code: req.query.code,
-      redirect_uri: 'https://eid-react.herokuapp.com/protected',
-      state: req.query.state
-    }
+  // if (req.query.code) {
+  //   let options = {
+  //     url: 'https://github.com/login/oauth/access_token',
+  //     client_id: process.env.github_secret.split('|')[0],
+  //     client_secret: process.env.github_secret.split('|')[1],
+  //     code: req.query.code,
+  //     redirect_uri: 'https://eid-react.herokuapp.com/protected',
+  //     state: req.query.state
+  //   }
+  //   request.post(options, function(err, response, body) {
+  //     res.send(body)
+  //     next()
+  //   })
+  // }
 
-    request.post(options, function(err, response, body) {
-      console.log('err in post', err)
-      console.log('res in post')
-      console.log('body in post', body)
-      res.send(body)
-    })
-  }
-
-  else {
-    res.send('stats and code condition not match')
-  }
+  // else {
+  //   res.send('stats and code condition not match')
+  // }
 })
 
 

@@ -55,7 +55,7 @@ app.get('/auth', function(req, res) {
       var token = body.split('&')[0].split('=')[1];
       // res.redirect(`https://api.github.com/user?access_token=${token}`)
       request.get(`https://api.github.com/user?access_token=${token}`, function(err, response, body) {
-        res.send('testing now: ' + body.login)
+        res.send('testing now: ' + body)
       })
     })
   }

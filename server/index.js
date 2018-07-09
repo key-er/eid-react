@@ -49,16 +49,14 @@ app.get('/auth', function(req, res) {
       client_secret:client_secret,
       code: req.query.code,
       redirect_uri: 'https://eid-react.herokuapp.com/auth/protected',
-      // state: req.query.state
       }
     }
     request.post(options, function(err, response, body) {
-      console.log(body)
-      // res.send(body)
-      var token = body.split('&')[0].split('=')[1]
-
-      res.redirect(`https://api.github.com/user?access_token=${token}`)
-
+      var token = body.split('&')[0].split('=')[1];
+      // res.redirect(`https://api.github.com/user?access_token=${token}`)
+      request.get(`https://api.github.com/user?access_token=${token}`, function(err, response, body) {
+        res.send('testing now: ', body.login)
+      })
     })
   }
 
